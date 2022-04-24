@@ -68,5 +68,5 @@ def create_ride(user, starting_time, type, point, available_seats):
 # print(create_ride(user,'7:00 PM', 'incoming'))
 
 # print(get_rides())
-# a=get_specific_rides([54098])
-# print(a[0]['Starting Time'])
+a=get_specific_rides([54098])
+print(a[0])

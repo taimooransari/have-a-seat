@@ -10,7 +10,7 @@ from tkinter_custom_button import TkinterCustomButton
 from pyrebase_init import login_auth
 from my_account import my_account_screen
 from create_rides import create_ride
-
+from available_rides import all_rides
 
 main_sc=None
 login_success_screen = None
@@ -30,7 +30,7 @@ def login_success(user):
     Label(login_success_screen,text="Manage User", bg="lightblue", width="300", height="2", font=("Calibri", 13)).pack()
     Label(login_success_screen, text="",pady=50).pack()
     button1 = TkinterCustomButton(master=login_success_screen,text="My Account", height=60,width=150 ,corner_radius=0, command=my_account_temp,fg_color="maroon",hover_color="violet red")
-    button2 = TkinterCustomButton(master=login_success_screen,text="Available Rides", height=60,width=150 ,corner_radius=0, command=logout,fg_color="maroon",hover_color="violet red")
+    button2 = TkinterCustomButton(master=login_success_screen,text="Available Rides", height=60,width=150 ,corner_radius=0, command=lambda : all_rides(login_success_screen,user),fg_color="maroon",hover_color="violet red")
     button3 = TkinterCustomButton(master=login_success_screen,text="Connections", height=60,width=150 ,corner_radius=0, command=logout,fg_color="maroon",hover_color="violet red")
     
 
