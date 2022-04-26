@@ -21,7 +21,7 @@ def register_auth(email,password,name,contact,dob,f_name):
 
 def login_auth(email,password):
     user_details = db.child('users')
-    user  =auth.sign_in_with_email_and_password('vania@gmail.com','vania123')
+    user  =auth.sign_in_with_email_and_password(email,password)
     data = dict(user_details.child(user['localId']).get().val())
     # print('===========================',data)
     return data

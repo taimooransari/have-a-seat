@@ -39,9 +39,9 @@ def login_success(user):
     # btn = TkinterCustomButton(master=login_success_screen,text="change", height=60,width=150 ,corner_radius=0, command=change_screens,fg_color="maroon",hover_color="violet red")
     # btn.pack()
     nodes = [
-        "Jan",
-        "Feb",
-        "Mar"
+        "DHA",
+        "GULSHAN",
+        "JAUHAR"
         ]
     
     global time_var
@@ -160,8 +160,8 @@ def verify_auth():
             # if user exists and credentials are correct
             # function to check auth from db
             # ---------------------------------------------------------------
-        # user = login_auth(email_verify.get(),password_verify.get())
-            user = login_auth('taimoor@gmail.com','12345678')
+            user = login_auth(email_verify.get(),password_verify.get())
+            # user = login_auth('taimoor@gmail.com','12345678')
         except:
             errorType=1
             if(errorType==1):

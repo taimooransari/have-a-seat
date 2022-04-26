@@ -1,20 +1,10 @@
 from tkinter import *
-# import os
-from tkinter import messagebox as msg
+# from tkinter import messagebox as msg
 import tkinter
 import register
 import login
-# import sys
-# import admin
-
 from tkinter_custom_button import TkinterCustomButton
 
-# app = tkinter.Tk()
-# app.geometry("300x200")
-# app.title("TkinterCustomButton")
-
-def button_function():
-    print("Button pressed")
 
 
 def main_account_screen():
@@ -22,7 +12,7 @@ def main_account_screen():
     main_screen = Tk()
     screen_size = str(main_screen.winfo_screenwidth())+'x'+str(main_screen.winfo_screenheight())
     main_screen.geometry(screen_size)
-    main_screen.title("Account Login")
+    main_screen.title("Have A Seat")
     main_screen.configure(bg="snow3")
 
 
@@ -36,7 +26,6 @@ def main_account_screen():
 
     button_2 = TkinterCustomButton(master=main_box,text="REGISTER",height=60,width=150 ,corner_radius=10, command=register_temp,fg_color="DodgerBlue2")
     button_2.pack()
-    # Label(main_box,text="",bg="snow3").pack()
     Label(main_box,text="",bg="snow3").pack()
     button_3 = TkinterCustomButton(master=main_box,text="ADMIN", corner_radius=10,fg_color="SlateBlue1",hover_color="pale violet red" ,command=admin_temp,height=60,width=150)
     button_3.pack()
@@ -67,6 +56,7 @@ def register_temp():
     global reg_screen
     go_home()
     reg_screen=register(main_screen)
+
 
 def login_temp():
     global log_screen
