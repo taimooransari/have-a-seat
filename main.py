@@ -1,5 +1,4 @@
 from tkinter import *
-# from tkinter import messagebox as msg
 import tkinter
 import register
 import login
@@ -33,7 +32,6 @@ def main_account_screen():
     Label(text="Designed by: Taimoor, Vania, Ali & Talha.", justify=LEFT,bg="lightblue", width="300", height="2", font=("Calibri", 13)).place(relx = 0.5,  
                    rely = 0.9, 
                    anchor = 'center')
-#  start program
     main_screen.mainloop()
 
 check=False
@@ -46,7 +44,6 @@ admin_screen=None
 def admin_temp():
     global admin_screen   
     go_home()
-    # admin_screen=admin(main_screen)
 
 
 

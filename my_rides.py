@@ -5,22 +5,24 @@ from tkinter.font import BOLD
 from turtle import width
 from map import show_path
 from tkinter_custom_button import TkinterCustomButton
-from create_rides import get_rides
+from create_rides import get_specific_rides
 from pyrebase_init import get_user,add_booking_to_ride
 top=None
 
 
     
-def all_rides(root,user):
+def my_rides(root,uid):
+    
     global top
-    allRides = get_rides()
+    user = get_user(uid)
+    allRides = get_specific_rides(user['rides'])
     top  =  Toplevel(root)
     screen_size = str(root.winfo_screenwidth()-50)+'x'+str(root.winfo_screenheight())
     top.geometry(screen_size)
     top.title("AVAILABLE RIDE")
     top.configure(bg="snow3")
     main_frame = Frame(top)
-    Label(top,text="ALL RIDES", bg="lightblue", width="300", height="2", font=("Calibri", 13)).pack()
+    Label(top,text="MY RIDES", bg="lightblue", width="300", height="2", font=("Calibri", 13)).pack()
     main_frame.pack(fill = BOTH, expand = 1,anchor='c')
 
     canvas = Canvas(main_frame)
@@ -37,9 +39,8 @@ def all_rides(root,user):
     
     canvas.configure()
     canvas.create_window((0, 0), window = second_frame, anchor = "n")
-    for code in allRides:
-        if(int(allRides[code]['Available Seats'])>0 and user['uid'] not in allRides[code]['Booked Users'] and user['uid']!=allRides[code]['Host'] ):
-            a = single_ride(allRides[code],user['uid'],second_frame)
+    for ride in allRides:
+            a = single_ride(ride,user['uid'],second_frame)
             a.pack(anchor=CENTER)
             Label(a,pady=5,height=1, font=("Calibri", 12)).pack(fill=X)
 
@@ -57,10 +58,8 @@ def single_ride(ride,uid,master):
     Label(a,text='HOST: '+u['name']+'/'+u['contact'],bg="azure",pady=5, font=("Calibri", 12)).pack(fill = X)
     Label(a,text=path,bg="azure",pady=5, font=("Calibri", 12)).pack(fill = X)
     path_btn = TkinterCustomButton(master = a,text="Path",height=40,width=60 ,corner_radius=10,command=lambda: show_path(ride['Path']).visualize())
-    btn = TkinterCustomButton(master = a,text="Book",height=40,width=60 ,corner_radius=10,command=lambda: add_booking_to_ride(ride['code'],uid,a))
     path_btn.pack()
     Label(a,pady=5,height='1',bg='azure', font=("Calibri", 12)).pack(fill=X)
-    btn.pack()
 
     
     return a

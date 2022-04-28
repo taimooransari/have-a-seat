@@ -41,7 +41,7 @@ def register(main):
     fathername_lable.pack()
     fathername_entry =  Entry(register_screen,width="35",  borderwidth=15, relief=tkinter.FLAT,font=("Calibri",13),textvariable=fathername)
     fathername_entry.pack()
-    dateofbirth_lable = Label(register_screen,bg='snow3',font=(16), text="Date of Birth (YYYY-MM-DD) * ")
+    dateofbirth_lable = Label(register_screen,bg='snow3',font=(16), text="Date of Birth (DD-MM-YYYY) * ")
     dateofbirth_lable.pack()
     dateofbirth_entry =  Entry(register_screen,width="35", borderwidth=15, relief=tkinter.FLAT,font=("Calibri",13),textvariable=dob)
     dateofbirth_entry.pack()
@@ -60,7 +60,6 @@ def register(main):
 
 def test_reg():
     user = register_auth(email.get(),password.get(),username.get(),contact.get(),dob.get(),fathername.get())
-    # print(user)
     register_screen.destroy()
     msg.showinfo(user['name'],'REGISTERED SUCCESFULLY')
 

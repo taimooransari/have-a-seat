@@ -1,7 +1,6 @@
 from tkinter import *
 import tkinter
 from tkinter.font import BOLD
-from tkinter_custom_button import TkinterCustomButton
 my_screen=None
 
 def my_account_screen(screen,user):
