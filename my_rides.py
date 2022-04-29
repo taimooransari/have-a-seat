@@ -37,15 +37,13 @@ def my_rides(root,uid):
     
     canvas.configure()
     canvas.create_window((0, 0), window = second_frame, anchor = "n")
-    for ride in allRides:
+    for ride in allRides[-1::]:
             a = single_ride(ride,user['uid'],second_frame)
             a.pack(anchor=CENTER)
             Label(a,pady=5,height=1, font=("Calibri", 12)).pack(fill=X)
 
 
-
 def single_ride(ride,uid,master):
-    print(ride['Path'])
     path= ride['Path'][0][0]+' --------> '+ ride['Path'][-1][-1]
     u = get_user(ride['Host'])
     a = Frame(master)
