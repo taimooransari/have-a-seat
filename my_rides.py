@@ -2,11 +2,9 @@ from tkinter import *
 from tkinter import ttk
 import tkinter as tk
 from tkinter.font import BOLD
-from turtle import width
 from map import show_path
 from tkinter_custom_button import TkinterCustomButton
-from create_rides import get_specific_rides
-from pyrebase_init import get_user,add_booking_to_ride
+from pyrebase_init import get_user,get_specific_rides
 top=None
 
 
@@ -59,6 +57,16 @@ def single_ride(ride,uid,master):
     Label(a,text=path,bg="azure",pady=5, font=("Calibri", 12)).pack(fill = X)
     path_btn = TkinterCustomButton(master = a,text="Path",height=40,width=60 ,corner_radius=10,command=lambda: show_path(ride['Path']).visualize())
     path_btn.pack()
+    Label(a,text='BOOKED USERS',bg="azure",pady=5, font=("Calibri", 12)).pack(fill = X)
+
+    for booked in ride['Booked Users']:
+        c = get_user(booked)
+        Label(a,text=c['name'],bg="azure",pady=5, font=("Calibri", 12)).pack(fill = X)
+
+
+
+
+
     Label(a,pady=5,height='1',bg='azure', font=("Calibri", 12)).pack(fill=X)
 
     

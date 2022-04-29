@@ -5,7 +5,7 @@ from tkinter.font import BOLD
 from turtle import width
 from map import show_path
 from tkinter_custom_button import TkinterCustomButton
-from create_rides import get_rides
+from pyrebase_init import get_rides
 from pyrebase_init import get_user,add_booking_to_ride
 top=None
 

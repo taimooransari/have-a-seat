@@ -1,10 +1,7 @@
-# First networkx library is imported
-# along with matplotlib
 import networkx as nx
 import matplotlib.pyplot as plt
 
 
-# Defining a Class
 class GraphVisualization:
 
 	def __init__(self):
