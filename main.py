@@ -1,18 +1,21 @@
 from tkinter import *
 import tkinter
+from tkinter import messagebox
 import register
 import login
 from tkinter_custom_button import TkinterCustomButton
 
-
+# FUNCTION INITIALIZING MAIN TKINTER WINDOW 
 
 def main_account_screen():
     global main_screen
+    
     main_screen = Tk()
     screen_size = str(main_screen.winfo_screenwidth())+'x'+str(main_screen.winfo_screenheight())
     main_screen.geometry(screen_size)
     main_screen.title("Have A Seat")
     main_screen.configure(bg="snow3")
+
 
 
     Label(text="Proceed from below", bg="DodgerBlue2", width="300", height="2", font=("Calibri", 13)).pack()
@@ -41,13 +44,16 @@ deposit_screen=None
 withdraw_screen=None
 admin_screen=None
 
+
+
+# EXTRA FUNCTIONS TO AID NAVIGATION 
+
+
 def admin_temp():
     global admin_screen   
     go_home()
+    messagebox.showinfo(" Try again in future","FEATURE UNDER DEVELOPMENT",)
 
-
-
-    
 
 def register_temp():
     global reg_screen
@@ -70,7 +76,5 @@ def go_home():
     if(admin_screen!=None):
         admin_screen.destroy()
         
-
- 
- 
+# MAIN FUNC CALL
 main_account_screen()

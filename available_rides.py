@@ -9,7 +9,7 @@ from pyrebase_init import get_rides
 from pyrebase_init import get_user,add_booking_to_ride
 top=None
 
-
+# ALL RIDES SCREEN
     
 def all_rides(root,user):
     global top
@@ -44,9 +44,8 @@ def all_rides(root,user):
             Label(a,pady=5,height=1, font=("Calibri", 12)).pack(fill=X)
 
 
-
+# SINGLE RIDE FRAME DISPLAYING THE RIDES INFO
 def single_ride(ride,uid,master):
-    print(ride['Path'])
     path= ride['Path'][0][0]+' --------> '+ ride['Path'][-1][-1]
     u = get_user(ride['Host'])
     a = Frame(master)

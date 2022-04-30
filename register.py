@@ -5,6 +5,8 @@ import tkinter
 from tkinter_custom_button import TkinterCustomButton
 from pyrebase_init import register_auth
 
+
+# MAIN REGISTER USER SCREEN WITH ENTRY FORM
 def register(main):
     global register_screen
     register_screen = Toplevel(main)
@@ -15,6 +17,7 @@ def register(main):
 
     global username
     global password
+    global password2
     global email
     global contact
     global fathername
@@ -22,12 +25,13 @@ def register(main):
 
     username = StringVar()
     password = StringVar()
+    password2 = StringVar()
     dob = StringVar()
     email = StringVar()
     contact = StringVar()
     fathername = StringVar()
  
-    Label(register_screen,text="REGISTER YOURSELF", bg="lime green", width="300", height="2", font=("Calibri", 13)).pack()
+    Label(register_screen,text="REGISTER YOURSELF", bg="lightblue", width="300", height="2", font=("Calibri", 13)).pack()
     Label(register_screen,bg='snow3', text="").pack()
     username_lable = Label(register_screen,bg='snow3',font=(16), text="Username * ")
     username_lable.pack()
@@ -53,14 +57,32 @@ def register(main):
     password_lable.pack()
     password_entry =  Entry(register_screen,width="35",  borderwidth=15, relief=tkinter.FLAT,font=("Calibri",13),textvariable=password,show="*")
     password_entry.pack()
+    password_lable2 = Label(register_screen,bg='snow3',font=(16), text="Confirm Password * ")
+    password_lable2.pack()
+    password_entry2 =  Entry(register_screen,width="35",  borderwidth=15, relief=tkinter.FLAT,font=("Calibri",13),textvariable=password2,show="*")
+    password_entry2.pack()
     Label(register_screen,bg='snow3', text="").pack()
-    button = TkinterCustomButton(master=register_screen,text="Register",height=60,width=150 ,corner_radius=10, command=test_reg,fg_color="green yellow",text_color='black',hover_color="lime green")
+    button = TkinterCustomButton(master=register_screen,text="Register",height=60,width=150 ,corner_radius=10, command=test_reg,fg_color="DodgerBlue2",text_color='black')
     button.pack()
     return register_screen
 
+
+# REGISTER HELPER FUNCTION TO CHECK VALIDATIONS AND THEN CALL REGISTER AUTH FUNCTION FROM FIREBASE
 def test_reg():
-    user = register_auth(email.get(),password.get(),username.get(),contact.get(),dob.get(),fathername.get())
-    register_screen.destroy()
-    msg.showinfo(user['name'],'REGISTERED SUCCESFULLY')
+    try:
+        if(password.get()==password2.get() and len(password2.get())>=6):
+            e=False
+            user = register_auth(email.get(),password.get(),username.get(),contact.get(),dob.get(),fathername.get())
+        else:
+            e = True
+            raise Exception('PASSWORD NOT SAME OR PASSWORD WEAK. RE-ENTER!')
+    except:
+        if(e):
+            msg.showerror('REGISTER FAILED',"PASSWORD NOT SAME OR PASSWORD WEAK. RE-ENTER!")  
+        else:  
+            msg.showerror('REGISTER FAILED',"Check your credentials")
+    else:
+        register_screen.destroy()
+        msg.showinfo(user['name'],'REGISTERED SUCCESFULLY')
 
 sys.modules[__name__] = register

@@ -15,6 +15,8 @@ from my_rides import my_rides
 main_sc=None
 login_success_screen = None
 user_info=None
+
+# LOGIN VERIFIED SCREEN
 def login_success(user):
     login_screen.destroy()
     global main_sc
@@ -134,6 +136,7 @@ def login_success(user):
     button = TkinterCustomButton(master=login_success_screen,text="Logout",height=60,width=150 ,corner_radius=0, command=logout,fg_color="maroon",hover_color="violet red")
     button.place(relx=0,rely=0.85)
 
+# HELPER FUNCTIONS FOR LOGIN VERIFIED SCREEN
 def post_ride_temp():
     global user_info
     user_info = create_ride(user_info,time_var.get(),ride_type.get(),point.get(),seats.get())
@@ -151,6 +154,7 @@ def my_account_temp():
 def logout():
     login_success_screen.destroy()
 
+# LOGIN SCREEN WITH ENTRY FORM
 def login(main_screen):
     global main_sc
     main_sc=main_screen
@@ -185,18 +189,19 @@ def login(main_screen):
     password_login_entry = Entry(login_screen, textvariable=password_verify, show= '*',width="35",  borderwidth=15, relief=tkinter.FLAT,font=("Calibri",13))
     password_login_entry.pack()
     Label(login_screen, text="",bg="snow3").pack()
-    button_2 = TkinterCustomButton(master=login_screen,text="Login",height=60,width=150 ,corner_radius=10, command=verify_auth,fg_color="DodgerBlue2")
+    button_2 = TkinterCustomButton(master=login_screen,text="Login",height=60,width=150 ,corner_radius=10, command=lambda: verify_auth(),fg_color="DodgerBlue2")
     button_2.pack()
     return login_screen
 
 user = None
     
+# AUTHENTICATION FUNCTION
 def verify_auth():
         global user
         try:
             user = login_auth(email_verify.get(),password_verify.get())
         except :
-            msg.showinfo(' LOGIN FAILED',"Check your credentials")
+            msg.showerror(' LOGIN FAILED',"Check your credentials")
         else:
             login_success(user)
 

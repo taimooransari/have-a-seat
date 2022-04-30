@@ -3,6 +3,7 @@ import tkinter
 from tkinter.font import BOLD
 my_screen=None
 
+# MY ACCOUNT SCREEN TO SHOW USER INFO
 def my_account_screen(screen,user):
     global my_screen
 
